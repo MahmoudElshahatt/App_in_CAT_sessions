@@ -1,5 +1,6 @@
 package com.example.appincatsessions.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -15,7 +16,7 @@ public interface ContactDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void addContact(Contact contact);
 
-    @Query("SELECT * From contacts ORDER BY id")
-    List<Contact> getAllContacts();
+    @Query("SELECT * From contacts ORDER By id DESC")
+    LiveData<List<Contact>> getAllContacts();
 
 }
